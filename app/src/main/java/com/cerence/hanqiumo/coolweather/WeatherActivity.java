@@ -1,5 +1,6 @@
 package com.cerence.hanqiumo.coolweather;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.cerence.hanqiumo.coolweather.gson.Forecast;
 import com.cerence.hanqiumo.coolweather.gson.Weather;
+import com.cerence.hanqiumo.coolweather.service.AutoUpdateService;
 import com.cerence.hanqiumo.coolweather.util.HttpUtil;
 import com.cerence.hanqiumo.coolweather.util.Utility;
 
@@ -182,6 +184,8 @@ public class WeatherActivity extends AppCompatActivity {
         carwashText.setText(carWash);
         sportText.setText(sport);
         weatherLayout.setVisibility(View.VISIBLE);
+        Intent intent=new Intent(this,AutoUpdateService.class);
+        startService(intent);
     }
 
     private void loadBingPic(){
